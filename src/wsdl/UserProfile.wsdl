@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tns="http://www.marara.com/userProfile"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  name="UserProfileService"
+                  targetNamespace="http://www.marara.com/userProfile"
+                  xmlns:upSchema="http://www.marara.com/userProfile/schema/UserProfile.xsd">
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.marara.com/userProfile" elementFormDefault="qualified">
+            <xsd:import namespace="http://www.marara.com/userProfile/schema/UserProfile.xsd"
+                        schemaLocation="UserProfile.xsd"/>
+            <xsd:element name="GetUserProfile">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="userName" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GetUserProfileResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="UserProfile" type="upSchema:UserProfile"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetUserProfileRequest">
+        <wsdl:part name="params" element="tns:GetUserProfileResponse"/>
+    </wsdl:message>
+
+</wsdl:definitions>
